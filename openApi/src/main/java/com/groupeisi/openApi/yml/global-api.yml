@@ -1,0 +1,8 @@
+openapi: 3.0.3
+info:
+  version: 1.0.0
+  title: Gestion de Tâches API
+  description: API pour la gestion de tâches
+  contact:
+    name: Seck pape
+    email: diabel1208@gmail.com

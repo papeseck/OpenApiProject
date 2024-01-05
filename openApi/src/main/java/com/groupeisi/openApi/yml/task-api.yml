@@ -1,0 +1,88 @@
+paths:
+  /api/tasks:
+    get:
+      summary: Récupérer toutes les tâches
+      operationId: getAllTasks
+      responses:
+        '200':
+          description: Liste des tâches récupérées avec succès
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Task'
+    post:
+      summary: Créer une nouvelle tâche
+      operationId: createTask
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Task'
+      responses:
+        '201':
+          description: Tâche créée avec succès
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+
+  /api/tasks/{taskId}:
+    get:
+      summary: Récupérer une tâche par ID
+      operationId: getTaskById
+      parameters:
+        - name: taskId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+          description: ID de la tâche à récupérer
+      responses:
+        '200':
+          description: Tâche récupérée avec succès
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+    put:
+      summary: Mettre à jour une tâche
+      operationId: updateTask
+      parameters:
+        - name: taskId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+          description: ID de la tâche à mettre à jour
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Task'
+      responses:
+        '200':
+          description: Tâche mise à jour avec succès
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+    delete:
+      summary: Supprimer une tâche
+      operationId: deleteTask
+      parameters:
+        - name: taskId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+          description: ID de la tâche à supprimer
+      responses:
+        '204':
+          description: Tâche supprimée avec succès
